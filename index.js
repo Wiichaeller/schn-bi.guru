@@ -2,6 +2,11 @@ function hideGuru() {
     document.getElementById('de-schnaebi-guru').style.display = 'none';
 }
 
+function twoNumbers(n){
+    return n > 9 ? "" + n: "0" + n;
+}
+
+
 Date.prototype.addHours = function (h) {
     this.setTime(this.getTime() + (h * 60 * 60 * 1000));
     return this;
@@ -26,13 +31,11 @@ function startTimer() {
         $countdown = document.getElementById('countdown');
     function updateTime() {
         var time = getTimeRemaining(endtime);
-        if (time.hours === 0 &&
-            time.minutes === 0 &&
-            times.seconds === 0) {
+        $countdown.innerText = twoNumbers(time.hours) + ':' + twoNumbers(time.minutes) + ':' + twoNumbers(time.seconds) + '';
+        if (time.total === 0) {
             $countdown.innerText = 'ehy i bi immr no eue wicheller guru oder?';
             window.clearInterval(interval);
         }
-        $countdown.innerText = time.hours + ':' + time.minutes + ':' + time.seconds + '';
     }
     updateTime();
     var interval = window.setInterval(updateTime, 1000);
