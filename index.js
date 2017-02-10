@@ -27,8 +27,9 @@ function getTimeRemaining(endtime) {
 }
 
 function startTimer() {
-    var endtime = new Date().addHours(0.02),
-        $countdown = document.getElementById('countdown');
+    var endtime = new Date().addHours(96),
+        $countdown = document.getElementById('countdown'),
+        $deniter = document.getElementById('deniter-video');
     function updateTime() {
         var time = getTimeRemaining(endtime);
         $countdown.innerText = twoNumbers(time.hours) + ':' + twoNumbers(time.minutes) + ':' + twoNumbers(time.seconds) + '';
@@ -38,6 +39,7 @@ function startTimer() {
         }
     }
     updateTime();
+    $deniter.style.display = 'block';
     var interval = window.setInterval(updateTime, 1000);
 }
 
